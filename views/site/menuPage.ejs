@@ -1,0 +1,18 @@
+<%- include('../partials/navbar'); %>
+
+<h1><%=pagetitle %></h1>
+<% for(var i=0;i<recipes.length;i++) {%>
+
+<div class="item">
+    <h3><%=recipes[i].title %></h3>
+    <p>
+        <%=recipes[i].body %>
+    </p>
+    Price::<%=recipes[i].price %>
+    <div>
+        <a href="/add-cart/<%=recipes[i]._id %>" class="btn btn-info w-full">Add To Cart</a>
+    </div>
+</div>
+
+  <% } %>
+</products.length;i++)>

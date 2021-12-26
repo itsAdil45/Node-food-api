@@ -1,10 +1,13 @@
 var express = require('express');
 const Recipes = require('../../models/recipes');
 const validateRecipe = require('../../middleware/validateRecipe');
+const auth = require('../../middleware/auth');
+const admin = require('../../middleware/admin');
 var router = express.Router();
 
 
 router.get("/", async (req, res) => {
+    console.log(req.user);
     let recipes = await Recipes.find();
     return res.send(recipes);
 });
@@ -24,7 +27,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.put("/:id",validateRecipe, async(req,res)=>{
+router.put("/:id", async(req,res)=>{
     let recipe = await Recipes.findById(req.params.id);
     recipe.title = req.body.title;
     recipe.body = req.body.body;
@@ -33,7 +36,7 @@ router.put("/:id",validateRecipe, async(req,res)=>{
     return res.send(recipe);
 });
 
-router.delete("/:id", async(req,res)=>{
+router.delete("/:id", auth,admin, async(req,res)=>{
     let recipe = await Recipes.findByIdAndDelete(req.params.id);
     return res.send(recipe);
 });

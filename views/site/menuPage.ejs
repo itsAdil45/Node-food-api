@@ -1,6 +1,8 @@
 <%- include('../partials/navbar'); %>
 
 <h1><%=pagetitle %></h1>
+ <!-- (check index. js in routes) values are comming from there-->
+
 <% for(var i=0;i<recipes.length;i++) {%>
 
 <div class="item">
@@ -10,6 +12,7 @@
     </p>
     Price::<%=recipes[i].price %>
     <div>
+        <!-- router created in index.js --. routes -->
         <a href="/add-cart/<%=recipes[i]._id %>" class="btn btn-info w-full">Add To Cart</a>
     </div>
 </div>

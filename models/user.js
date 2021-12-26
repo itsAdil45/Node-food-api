@@ -13,11 +13,7 @@
 //         }
 //     });
 
-// userSchema.methods.generateHashedPassword = async function(){
-//     let salt = await bcryptjs.genSalt(12);
-//     this.password = await bcryptjs.hash(this.password,salt);
 
-// }
 
 // // const User = mongoose.models.User
 // var User = mongoose.model("User",userSchema);
